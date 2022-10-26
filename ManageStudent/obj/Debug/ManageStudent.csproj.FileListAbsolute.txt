@@ -1,0 +1,9 @@
+/Users/tranbaonguyen/ManageStudent/ManageStudent/bin/Debug/ManageStudent.exe
+/Users/tranbaonguyen/ManageStudent/ManageStudent/bin/Debug/ManageStudent.pdb
+/Users/tranbaonguyen/ManageStudent/ManageStudent/obj/Debug/ManageStudent.csproj.AssemblyReference.cache
+/Users/tranbaonguyen/ManageStudent/ManageStudent/obj/Debug/ManageStudent.csproj.CoreCompileInputs.cache
+/Users/tranbaonguyen/ManageStudent/ManageStudent/obj/Debug/ManageStudent.exe
+/Users/tranbaonguyen/ManageStudent/ManageStudent/obj/Debug/ManageStudent.pdb
+/Users/tranbaonguyen/ManageStudent/ManageStudent/bin/Debug/ConsoleTables.dll
+/Users/tranbaonguyen/ManageStudent/ManageStudent/bin/Debug/ConsoleTables.pdb
+/Users/tranbaonguyen/ManageStudent/ManageStudent/obj/Debug/ManageStudent.csproj.CopyComplete
