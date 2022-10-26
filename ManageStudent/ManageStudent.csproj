@@ -44,11 +44,11 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Class\Grade.cs" />
-        <Compile Include="Class\Lecture.cs" />
+        <Compile Include="Class\Login.cs" />
         <Compile Include="Class\People.cs" />
+        <Compile Include="Class\School.cs" />
         <Compile Include="Class\Student.cs" />
         <Compile Include="Class\Table.cs" />
-        <Compile Include="Class\ToStringTable.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>

@@ -10,13 +10,62 @@ namespace ManageStudent
 {
   internal class Program
   {
+   static School school = new School();
+
     static void Main(string[] args)
     {
-      Student student = new Student();
-      student.AddStudentList();
-      MainMenu();
-    }
+      Login login = new Login();
+      school.AddStudentList();
+      school.Add();
+      int choice;
+      while (true)
+      {
+        Console.WriteLine("+----------------------------+");
+        Console.WriteLine("| STUDENTS MANAGEMENT SYSTEM |");
+        Console.WriteLine("+----------------------------+");
+        Console.WriteLine("|1. Login student            |");
+        Console.WriteLine("|2. Login Lecture            |");
+        Console.WriteLine("|3. Exit                     |");
+        Console.WriteLine("+----------------------------+");
+        Console.Write("Your choice: ");
+        choice = int.Parse(Console.ReadLine());
+        switch (choice)
+        {
+          case 1:
+            Console.Write("Input IdStudent: ");
+            string input = Console.ReadLine();
+            string idStudent = input.ToUpper();
+            Console.Write("Input password: ");
+            int password = int.Parse(Console.ReadLine());
+            if (login.LoginUser(idStudent,password))
+            {
+              school.Display(idStudent);
+              school.SearchGrade(idStudent);
+            }
+            else
+            {
+              Console.WriteLine("Wrong");
+            }
+            break;
+          case 2:
+            Console.Write("Input email: ");
+            string user = Console.ReadLine();
+            Console.Write("Input password: ");
+            string password1 = Console.ReadLine();
+            if (login.LoginUser(user,password1))
+            {
+              Console.WriteLine("Login success.");
+              MainMenu();
+            }
+            else
+            {
+              Console.WriteLine("Wrong");
 
+            }
+            break;
+      }
+      }
+    }
     private static void MainMenu()
     {
       int choice;
@@ -24,7 +73,7 @@ namespace ManageStudent
       Console.WriteLine("| STUDENTS MANAGEMENT SYSTEM |");
       Console.WriteLine("+----------------------------+");
       Console.WriteLine("|1. Manage Students          |");
-      Console.WriteLine("|2. Manage Lectures          |");
+      Console.WriteLine("|2. Manage Grades            |");
       Console.WriteLine("|3. Exit                     |");
       Console.WriteLine("+----------------------------+");
       Console.Write("Your choice: ");
@@ -35,18 +84,15 @@ namespace ManageStudent
           MenuStudent();
           break;
         case 2:
-          MenuLecture();
+          MenuGrade();
           break;
         case 3:
           
           return;
       }
     }
-
     private static void MenuStudent()
     {
-      Student student = new Student();
-      student.AddStudentList();
       while (true)
       {
         Console.WriteLine("+----------------------------+");
@@ -64,66 +110,24 @@ namespace ManageStudent
         switch (choice)
         {
           case 1:
-            student.AddNew();
+            school.AddNew();
             break;
           case 2:
-            student.ViewList();
+            school.ViewList();
             break;
           case 3:
-            student.Search();
+            Console.Write("Input something to search: ");
+            string search = Console.ReadLine();
+            string search1=search.ToUpper();
+            school.Search(search1);
             break;
           case 4:
-            student.Delete();
+            school.Delete();
             break;
           case 5 :
-           student. Update();
+            school. Update();
             break;
           case 6:
-            MainMenu();
-            break;
-        }
-      }
-    }
-    private static void MenuLecture()
-    {
-      Lecture lecture = new Lecture();
-      lecture.AddLectureList();
-      while (true)
-      {
-        Console.WriteLine("+----------------------------+");
-        Console.WriteLine("| Lecture MANAGEMENT SYSTEM |");
-        Console.WriteLine("+----------------------------+");
-        Console.WriteLine("|1. Insert new Lecture       |");
-        Console.WriteLine("|2. View list of Lectures    |");
-        Console.WriteLine("|3. Search Lecture           |");
-        Console.WriteLine("|4. Delete Lecture           |");
-        Console.WriteLine("|5. Update Lecture           |");
-        Console.WriteLine("|6. Grade Menu               |");
-        Console.WriteLine("|7. Back to Main Menu        |");
-        Console.WriteLine("+----------------------------+");
-        Console.Write("Your choice: ");
-        int choice = int.Parse(Console.ReadLine());
-        switch (choice)
-        {
-          case 1:
-            lecture.AddNew();
-            break;
-          case 2:
-            lecture.ViewList();
-            break;
-          case 3:
-            lecture.Search();
-            break;
-          case 4:
-            lecture.Delete();
-            break;
-          case 5:
-            lecture.Update();
-            break;
-          case 6:
-            MenuGrade();
-            break;
-          case 7:
             MainMenu();
             break;
         }
@@ -131,9 +135,8 @@ namespace ManageStudent
     }
     private static void MenuGrade()
     {
-      Grade grade = new Grade();
+      
       int choice;
-      grade.Add();
       while (true)
       {
         Console.WriteLine("+----------------------------+");
@@ -150,22 +153,22 @@ namespace ManageStudent
         switch (choice)
         {
           case 1:
-            grade.ViewGrade();
+            school.ViewGrade();
             break;
           case 2:
-            grade.UpdateGrade();
+            school.UpdateGrade();
             break;
           case 3:
             Console.Write("Input id student to search: ");
             string search = Console.ReadLine();
             string search1 = search.ToUpper();
-            grade.SearchGrade(search1);
+            school.SearchGrade(search1);
             break;
           case 4:
-            grade.DeleteGrade();
+            school.DeleteGrade();
             break;
           case 5:
-            MainMenu();
+            MenuStudent();
             break;
         }
       }

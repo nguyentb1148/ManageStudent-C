@@ -11,12 +11,11 @@ namespace ManageStudent.Class
         string fullName;
         DateTime dateOfBirth;
         string email;
-        public virtual void ViewList() { }
-        public virtual void AddNew() { }
-        public virtual void Search() { }
-        public virtual void Update() { }
-        public virtual void Delete() { }
-        public virtual void Display() { }
+
+        public virtual void Display()
+        {
+            
+        }
         
     }
 }
