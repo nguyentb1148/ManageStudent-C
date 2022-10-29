@@ -8,7 +8,6 @@ namespace ManageStudent.Class
     public class School 
     {
         public static List <Student> listStudents = new List<Student>();
-        private static List<Grade> listGrade = new List<Grade>();
         
         public  void ViewList()
         {
@@ -18,7 +17,8 @@ namespace ManageStudent.Class
 
           foreach (Student i in listStudents)
           {
-            table.AddRow($"{i.ID}", i.IdStudent, i.FullName, i.IdClass,i.Email, i.DateOfBirth.ToString("dd/MM/yyyy")
+            table.AddRow($"{i.ID}", i.IdStudent, i.FullName, i.IdClass,i.Email,
+                i.DateOfBirth.ToString("dd/MM/yyyy")
               , i.Address);
           }
 
@@ -204,139 +204,6 @@ namespace ManageStudent.Class
             listStudents.Add(new Student(3,"abcxyz address","nguuen tran", DateTime.Parse("01/10/2002"),"nguuentran1148@gmail.com","GCD201888","GCD1102" ));
             listStudents.Add(new Student(4,"abcd address","Vo Nguyen Kim Bao Thanh2",DateTime.Parse("04/18/2002"),"thanhdaubuoi@gmail.com","GCD201809","GCD1001"));
 
-        }
-        public void Add()
-        {
-            foreach (Student s in listStudents)
-            {
-                Grade grade = new Grade();
-                grade.Id = s.ID;
-                grade.Name = s.FullName;
-                grade.IdStudent1 = s.IdStudent;
-                grade.Math = 0;
-                grade.Physical = 0;
-                grade.Chemistry = 0;
-                grade.AveragePoint = grade.AveragePoint;
-                grade.Rank = "";
-                listGrade.Add(grade);
-            }
-        }
-        public void ViewGrade()
-        {
-            var table = new Table();
-
-            
-            table.SetHeaders("No","Id student","Name","Math","Physical","Chemistry","Average","Rank");
-
-            foreach (Grade i in listGrade)
-            {
-                table.AddRow($"{i.Id}",i.IdStudent1,i.Name,$"{i.Math}",$"{i.Physical}",$"{i.Chemistry}",
-                    $"{i.AveragePoint}",i.Rank);
-            }
-            Console.WriteLine(table.ToString());
-        }
-        public void SearchGrade(string search)
-        {
-            Boolean found = false;
-            foreach (Grade i in listGrade)
-            {
-                if (search.Equals(i.IdStudent1))
-                {
-                    var table = new Table();
-                    table.SetHeaders("No","Id student","Name","Math","Physical","Chemistry","Average","Rank");
-                    
-                    table.AddRow($"{i.Id}",i.IdStudent1,i.Name,$"{i.Math}",$"{i.Physical}",$"{i.Chemistry}",
-                        $"{i.AveragePoint}",i.Rank);
-                    Console.WriteLine(table.ToString());
-                    found = true;
-                }
-            }
-            if (found==false)
-            {
-                Console.WriteLine("No student have id : "+search);
-            }
-        }
-        public void UpdateGrade()
-        {
-            Boolean found = false;
-            Console.Write("Input Id student to search: ");
-            string search=Console.ReadLine();
-            string search1 = search.ToUpper();
-            foreach (Grade i in listGrade)
-            {
-                if (search1.Equals(i.IdStudent1))
-                {
-                    var table = new Table();
-                    table.SetHeaders("No", "Id student", "Name", "Math", "Physical", "Chemistry", "Average", "Rank");
-                    table.AddRow($"{i.Id}", i.IdStudent1, i.Name, $"{i.Math}", $"{i.Physical}", $"{i.Chemistry}",
-                        $"{i.AveragePoint}", i.Rank);
-                    Console.WriteLine(table.ToString());
-                    found = true;
-                    Console.Write("Enter math point: ");
-                    double math = double.Parse(Console.ReadLine());
-                    while (math < 0 || math > 10)
-                    {
-                        Console.WriteLine("Wrong point!! ");
-                        Console.Write("Enter math point: ");
-                        math = double.Parse(Console.ReadLine());
-                    }
-                    i.Math = math;
-                    Console.Write("Enter physical point: ");
-                    double physical = double.Parse(Console.ReadLine());
-                    while (physical < 0 || physical > 10)
-                    {
-                        Console.WriteLine("Wrong point !! ");
-                        Console.Write("Enter physical point: ");
-                        physical = double.Parse(Console.ReadLine());
-                    }
-                    i.Physical = physical;
-                    Console.Write("Enter chemistry point: ");
-                    double chemistry = double.Parse(Console.ReadLine());
-                    while (chemistry < 0 || chemistry > 10)
-                    {
-                        Console.WriteLine("Wrong point!! ");
-                        Console.Write("Enter chemistry point: ");
-                        chemistry = double.Parse(Console.ReadLine());
-                    }
-                    i.Chemistry = chemistry;
-                    i.AveragePoint = i.AveragePoint;
-                    i.Rank = i.Rank;
-                    Console.WriteLine("Update successfully.");
-                }
-            }
-        }
-        public void DeleteGrade()
-        {
-            Boolean found = false;
-            Console.Write("Input Id student to search: ");
-            string search=Console.ReadLine();
-            foreach (Grade i in listGrade)
-            {
-                if (search.Equals(i.IdStudent1))
-                {
-                    var table = new Table();
-                    table.SetHeaders("No", "Id student", "Name", "Math", "Physical", "Chemistry", "Average", "Rank");
-
-                    table.AddRow($"{i.Id}", i.IdStudent1, i.Name, $"{i.Math}", $"{i.Physical}", $"{i.Chemistry}",
-                        $"{i.AveragePoint}", i.Rank);
-                    Console.WriteLine(table.ToString());
-                }
-                i.Math = 0;
-                i.Physical = 0;
-                i.Chemistry = 0;
-                i.AveragePoint = 0;
-                i.Rank = "";
-                found = true;
-            }
-            if (found==true)
-            {
-                Console.WriteLine("Delete grade successfully");
-            }
-            if (found==false)
-            {
-                Console.WriteLine("No student have id : "+search);
-                
-            }
         }
     }
 }

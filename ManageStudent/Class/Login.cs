@@ -9,7 +9,7 @@ namespace ManageStudent.Class
             int pass = 1212;
             foreach (Student student in listStudents)
             {
-                if (username.Equals(student.IdStudent))
+                if (username.Equals(student.IdStudent) && password==pass )
                 {
                     return true;
                 }
@@ -19,7 +19,7 @@ namespace ManageStudent.Class
         public bool LoginUser(string username, string password)
         {
             string lecture = "lecture";
-            string pass = "1212";
+            string pass = "admin";
             if (username==lecture&& password==pass)
             {
                 return true;

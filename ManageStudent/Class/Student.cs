@@ -25,16 +25,12 @@ namespace ManageStudent.Class
             this.idStudent = idStudent;
             this.idClass = idClass;
         }
-      
         public Student()
         {
         }
-
         public string Address { get { return address; } set { address = value; } }
-        public DateTime DateOfBirth
-        { get { return dateOfBirth; } set { dateOfBirth = value; } }
-        public string FullName
-        { get { return fullName; } set { fullName = value; } }
+        public DateTime DateOfBirth { get { return dateOfBirth; } set { dateOfBirth = value; } }
+        public string FullName { get { return fullName; } set { fullName = value; } }
         public int ID { get { return id; } set { id = value; } }
         public string Email { get { return email; } set { email = value; } }
         public string IdStudent { get { return idStudent; } set { idStudent = value; } }
